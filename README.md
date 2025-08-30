@@ -1,47 +1,28 @@
+# 🌊 Aplikasi VR 360° - Wisata Pantai Lambangan Pauno
+
+Selamat datang di **Wisata VR 360° Pantai Lambangan Pauno**, sebuah pengalaman virtual reality yang memungkinkan Anda menjelajahi salah satu surga tersembunyi di Kabupaten Banggai Laut, Sulawesi Tengah, langsung dari browser atau perangkat Android.
 
 ---
 
-## ⚡ Cara Menjalankan
-
-1. Pastikan folder `assets` berisi file `LPauno.mp4`.
-2. Buka `index.html` di browser desktop atau mobile.
-3. Gunakan mouse / layar sentuh untuk melihat panorama 360°.
-
----
-
-## 📱 Untuk Android WebView / Google Play
-
-1. Bungkus project ini dengan **WebView Android** menggunakan Android Studio.
-2. Letakkan semua file (`index.html` + folder `assets`) di folder `assets` Android.
-3. Build APK dan publish ke Google Play.
+## 🎯 Tujuan Aplikasi
+- Memperkenalkan keindahan Pantai Lambangan Pauno secara interaktif.  
+- Memberikan pengalaman VR 360° untuk wisata bahari, snorkeling, atau menikmati sunset.  
+- Mendukung publikasi ke Android melalui WebView, sehingga bisa diakses melalui Google Play.
 
 ---
 
-## 🎨 Fitur
+## 🏖 Tentang Pantai Lambangan Pauno
+Pantai Lambangan Pauno menawarkan:  
+- Air laut yang jernih dan bersih  
+- Pasir putih lembut yang nyaman untuk berjalan  
+- Panorama alam menenangkan, cocok untuk relaksasi  
+- Spot foto dan pemandangan sunset yang memukau  
 
-- Video 360° interaktif dengan look-around camera.
-- Overlay informasi tentang Pantai Lambangan Pauno.
-- Footer lokasi.
-- Autoplay & loop video 360°.
-
----
-
-## 🛠️ Teknologi
-
-- [A-Frame](https://aframe.io/) v1.5.0
-- HTML, CSS, JavaScript
-- Video 360° (MP4)
+Lokasi: 📍 Luwuk Banggai, Sulawesi Tengah
 
 ---
 
-## 🔗 Referensi
-
-- [A-Frame Documentation](https://aframe.io/docs/)
-- [Tutorial Video 360° dengan A-Frame](https://aframe.io/examples/)
-
----
-
-## ⚠️ Catatan
-
-- **YouTube 360° langsung tidak bisa dipakai** di `<a-videosphere>`. Video harus MP4 lokal.
-- Pastikan **nama file & path benar** (`assets/LPauno.mp4`) untuk VR berjalan lancar.
+## 🚀 Cara Menjalankan Aplikasi
+1. Clone repository ini:
+   ```bash
+   git clone https://github.com/det333/Dewi-Banggai-Laut.git
