@@ -2,10 +2,13 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>Wisata VR 360 - Pantai Lambangan Pauno</title>
+  <title>Wisata VR 360 - Pantai Banggai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-youtube-component@1.1.0/dist/aframe-youtube-component.min.js"></script>
+  
   <style>
     body, html {
       margin: 0;
@@ -17,13 +20,12 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       padding: 15px 20px;
       border-radius: 12px;
       color: white;
-      max-width: 350px;
+      max-width: 360px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      animation: fadeIn 2s ease-in-out;
     }
     .overlay h1 {
       font-size: 22px;
@@ -31,10 +33,23 @@
       color: #ffdd57;
     }
     .overlay p {
-      margin: 0;
+      margin: 5px 0;
       font-size: 14px;
       line-height: 1.4;
     }
+    .btn {
+      display: inline-block;
+      margin: 5px 5px 0 0;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: white;
+      background-color: #0077ff;
+      transition: 0.2s;
+    }
+    .btn:hover { background-color: #005bb5; }
     .footer {
       position: absolute;
       bottom: 15px;
@@ -45,38 +60,62 @@
       padding: 6px 12px;
       border-radius: 8px;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-  <!-- Overlay Informasi -->
+
+  <!-- Overlay -->
   <div class="overlay">
-    <h1>🌊 Pantai Lambangan Pauno</h1>
-    <p>
+    <h1 id="pantaiNama">🌴 Pantai Lambangan Pauno</h1>
+    <p id="pantaiInfo">
       Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴.<br>
-      Pantai ini menawarkan air laut jernih, pasir putih yang lembut,<br>
-      serta panorama alam yang menenangkan jiwa.  
+      Pantai ini menawarkan air laut jernih, pasir putih yang lembut, serta panorama alam yang menenangkan jiwa.<br>
       Cocok untuk wisata bahari, snorkeling, atau sekadar menikmati sunset.
     </p>
+    <p>Pilih pantai:</p>
+    <button class="btn" onclick="gantiPantai('bontolan')">Pantai Bontolan</button>
+    <button class="btn" onclick="gantiPantai('ponpon')">Pantai Ponpon</button>
+    <button class="btn" onclick="gantiPantai('pauno')">Pantai Lambangan Pauno</button>
   </div>
 
-  <!-- Footer Lokasi -->
   <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
 
   <!-- VR Scene -->
   <a-scene>
-    <!-- Video 360 -->
-    <video id="paunoVideo" src="assets/LPauno..mp4.mp4" autoplay loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
-
-    <!-- Sphere background pakai video -->
-    <a-videosphere src="#paunoVideo"></a-videosphere>
-
-    <!-- Kamera -->
+    <a-videosphere id="vSphere" youtube="url: https://www.youtube.com/watch?v=pWw78NhJJwQ; autoplay: true; loop: true;"></a-videosphere>
     <a-entity camera look-controls></a-entity>
   </a-scene>
+
+  <script>
+    const pantaiData = {
+      bontolan: {
+        url: 'https://www.youtube.com/watch?v=YnVuu8-fJV8',
+        nama: '🌊 Pantai Bontolan',
+        info: 'Pantai Bontolan memiliki pemandangan laut yang luas dengan pasir putih lembut dan ombak yang tenang. Cocok untuk berenang dan piknik keluarga.'
+      },
+      ponpon: {
+        url: 'https://www.youtube.com/watch?v=pUBFrmgr_t4',
+        nama: '🏖️ Pantai Ponpon',
+        info: 'Pantai Ponpon terkenal dengan tebing batu karangnya dan air yang jernih. Tempat favorit untuk foto panorama dan snorkeling.'
+      },
+      pauno: {
+        url: 'https://www.youtube.com/watch?v=pWw78NhJJwQ',
+        nama: '🌴 Pantai Lambangan Pauno',
+        info: 'Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴. Cocok untuk wisata bahari, snorkeling, atau menikmati sunset.'
+      }
+    };
+
+    function gantiPantai(pantai) {
+      const data = pantaiData[pantai];
+      const sphere = document.querySelector('#vSphere');
+      sphere.setAttribute('youtube', 'url', data.url);
+      sphere.components.youtube.playVideo(); // mainkan video baru
+
+      // Update overlay info
+      document.getElementById('pantaiNama').innerHTML = data.nama;
+      document.getElementById('pantaiInfo').innerHTML = data.info;
+    }
+  </script>
+
 </body>
 </html>
-
