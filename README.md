@@ -1,24 +1,47 @@
-# 🌊 Aplikasi Virtual Reality 360 - Wisata Pantai Lambangan Pauno
-
-Proyek ini menampilkan **media panduan & informasi wisata berbasis Virtual Reality 360°** untuk memperkenalkan destinasi indah di Kabupaten Banggai Laut, Sulawesi Tengah.  
-Dibuat menggunakan [A-Frame](https://aframe.io), aplikasi ini dapat dibuka langsung melalui browser PC maupun smartphone.
 
 ---
 
-## 🎥 Destinasi 360
-### 🌊 Pantai Lambangan Pauno
-Pantai Lambangan Pauno merupakan salah satu wisata bahari terbaik di **Luwuk Banggai**, dengan:
-- Pasir putih yang bersih  
-- Air laut jernih kebiruan  
-- Panorama sunset yang memukau  
-- Suasana alami yang tenang, cocok untuk snorkeling, diving, dan bersantai  
+## ⚡ Cara Menjalankan
+
+1. Pastikan folder `assets` berisi file `LPauno.mp4`.
+2. Buka `index.html` di browser desktop atau mobile.
+3. Gunakan mouse / layar sentuh untuk melihat panorama 360°.
 
 ---
 
-## 🚀 Coba Aplikasi
-Klik link berikut untuk menjelajahi pantai dalam mode VR 360°:  
-👉 [Wisata VR 360 - Pantai Lambangan Pauno](https://det333.github.io/Dewi-Banggai-Laut/)
+## 📱 Untuk Android WebView / Google Play
+
+1. Bungkus project ini dengan **WebView Android** menggunakan Android Studio.
+2. Letakkan semua file (`index.html` + folder `assets`) di folder `assets` Android.
+3. Build APK dan publish ke Google Play.
 
 ---
 
-## 📂 Struktur Proyek
+## 🎨 Fitur
+
+- Video 360° interaktif dengan look-around camera.
+- Overlay informasi tentang Pantai Lambangan Pauno.
+- Footer lokasi.
+- Autoplay & loop video 360°.
+
+---
+
+## 🛠️ Teknologi
+
+- [A-Frame](https://aframe.io/) v1.5.0
+- HTML, CSS, JavaScript
+- Video 360° (MP4)
+
+---
+
+## 🔗 Referensi
+
+- [A-Frame Documentation](https://aframe.io/docs/)
+- [Tutorial Video 360° dengan A-Frame](https://aframe.io/examples/)
+
+---
+
+## ⚠️ Catatan
+
+- **YouTube 360° langsung tidak bisa dipakai** di `<a-videosphere>`. Video harus MP4 lokal.
+- Pastikan **nama file & path benar** (`assets/LPauno.mp4`) untuk VR berjalan lancar.
