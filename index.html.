@@ -69,14 +69,14 @@
 
   <!-- VR Scene -->
   <a-scene>
-    <!-- Sphere 360 sebagai background -->
-    <a-sphere radius="5000" scale="-1 1 1" material="shader: flat; src: #ytVideo"></a-sphere>
+    <!-- Video 360 MP4 -->
+    <video id="paunoVideo" src="assets/LPauno.mp4" autoplay loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+
+    <!-- Sphere 360 pakai video -->
+    <a-videosphere src="#paunoVideo"></a-videosphere>
 
     <!-- Kamera -->
     <a-entity camera look-controls position="0 1.6 0"></a-entity>
-
-    <!-- YouTube 360 Video via iframe (disembunyikan) -->
-    <iframe id="ytVideo" src="https://www.youtube.com/embed/pWw78NhJJwQ?autoplay=1&loop=1&playlist=pWw78NhJJwQ&controls=0&modestbranding=1&rel=0" style="display:none;"></iframe>
   </a-scene>
 </body>
 </html>
