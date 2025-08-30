@@ -2,13 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>Wisata VR 360 - Pantai Banggai</title>
+  <title>Wisata VR 360 - Pantai Lambangan Pauno</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-youtube-component@1.1.0/dist/aframe-youtube-component.min.js"></script>
-  
   <style>
     body, html {
       margin: 0;
@@ -20,12 +16,14 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       padding: 15px 20px;
       border-radius: 12px;
       color: white;
-      max-width: 360px;
+      max-width: 350px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease-in-out;
+      z-index: 2;
     }
     .overlay h1 {
       font-size: 22px;
@@ -33,23 +31,10 @@
       color: #ffdd57;
     }
     .overlay p {
-      margin: 5px 0;
+      margin: 0;
       font-size: 14px;
       line-height: 1.4;
     }
-    .btn {
-      display: inline-block;
-      margin: 5px 5px 0 0;
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      color: white;
-      background-color: #0077ff;
-      transition: 0.2s;
-    }
-    .btn:hover { background-color: #005bb5; }
     .footer {
       position: absolute;
       bottom: 15px;
@@ -59,63 +44,39 @@
       background: rgba(0,0,0,0.4);
       padding: 6px 12px;
       border-radius: 8px;
+      z-index: 2;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Overlay -->
+  <!-- Overlay Informasi -->
   <div class="overlay">
-    <h1 id="pantaiNama">🌴 Pantai Lambangan Pauno</h1>
-    <p id="pantaiInfo">
+    <h1>🌊 Pantai Lambangan Pauno</h1>
+    <p>
       Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴.<br>
-      Pantai ini menawarkan air laut jernih, pasir putih yang lembut, serta panorama alam yang menenangkan jiwa.<br>
+      Pantai ini menawarkan air laut jernih, pasir putih yang lembut,<br>
+      serta panorama alam yang menenangkan jiwa.<br>
       Cocok untuk wisata bahari, snorkeling, atau sekadar menikmati sunset.
     </p>
-    <p>Pilih pantai:</p>
-    <button class="btn" onclick="gantiPantai('bontolan')">Pantai Bontolan</button>
-    <button class="btn" onclick="gantiPantai('ponpon')">Pantai Ponpon</button>
-    <button class="btn" onclick="gantiPantai('pauno')">Pantai Lambangan Pauno</button>
   </div>
 
+  <!-- Footer Lokasi -->
   <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
 
   <!-- VR Scene -->
   <a-scene>
-    <a-videosphere id="vSphere" youtube="url: https://www.youtube.com/watch?v=pWw78NhJJwQ; autoplay: true; loop: true;"></a-videosphere>
-    <a-entity camera look-controls></a-entity>
+    <!-- Sphere 360 sebagai background -->
+    <a-sphere radius="5000" scale="-1 1 1" material="shader: flat; src: #ytVideo"></a-sphere>
+
+    <!-- Kamera -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+
+    <!-- YouTube 360 Video via iframe (disembunyikan) -->
+    <iframe id="ytVideo" src="https://www.youtube.com/embed/pWw78NhJJwQ?autoplay=1&loop=1&playlist=pWw78NhJJwQ&controls=0&modestbranding=1&rel=0" style="display:none;"></iframe>
   </a-scene>
-
-  <script>
-    const pantaiData = {
-      bontolan: {
-        url: 'https://www.youtube.com/watch?v=YnVuu8-fJV8',
-        nama: '🌊 Pantai Bontolan',
-        info: 'Pantai Bontolan memiliki pemandangan laut yang luas dengan pasir putih lembut dan ombak yang tenang. Cocok untuk berenang dan piknik keluarga.'
-      },
-      ponpon: {
-        url: 'https://www.youtube.com/watch?v=pUBFrmgr_t4',
-        nama: '🏖️ Pantai Ponpon',
-        info: 'Pantai Ponpon terkenal dengan tebing batu karangnya dan air yang jernih. Tempat favorit untuk foto panorama dan snorkeling.'
-      },
-      pauno: {
-        url: 'https://www.youtube.com/watch?v=pWw78NhJJwQ',
-        nama: '🌴 Pantai Lambangan Pauno',
-        info: 'Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴. Cocok untuk wisata bahari, snorkeling, atau menikmati sunset.'
-      }
-    };
-
-    function gantiPantai(pantai) {
-      const data = pantaiData[pantai];
-      const sphere = document.querySelector('#vSphere');
-      sphere.setAttribute('youtube', 'url', data.url);
-      sphere.components.youtube.playVideo(); // mainkan video baru
-
-      // Update overlay info
-      document.getElementById('pantaiNama').innerHTML = data.nama;
-      document.getElementById('pantaiInfo').innerHTML = data.info;
-    }
-  </script>
-
 </body>
 </html>
