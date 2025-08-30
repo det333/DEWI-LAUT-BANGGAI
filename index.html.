@@ -69,7 +69,7 @@
   <!-- VR Scene -->
   <a-scene>
     <!-- Video 360 -->
-    <video id="paunoVideo" src="assets/LPauno.mp4" autoplay loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+    <video id="paunoVideo" src="assets/LPauno..mp4.mp4" autoplay loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
 
     <!-- Sphere background pakai video -->
     <a-videosphere src="#paunoVideo"></a-videosphere>
@@ -79,3 +79,4 @@
   </a-scene>
 </body>
 </html>
+
